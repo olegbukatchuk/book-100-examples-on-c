@@ -2,6 +2,7 @@
 // Created by Oleg Bukatchuk on 21/10/2017.
 //
 
+// Вычисляем размер int, float, double, char
 #include <stdio.h>
 
 int main(void) {
