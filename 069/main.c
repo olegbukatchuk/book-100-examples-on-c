@@ -38,6 +38,7 @@ int kbhit() {
 }
 
 void nonblock(int state) {
+
     struct termios ttystate;
 
     // Получаем состояние терминала
@@ -170,8 +171,15 @@ void clear_snake_on_table() {
 
     for (int i=1; i<=snake_size; ++i) {
 
-        
+        a[coordinates_x[i][coordinates_y[i]]] = '';
 
     }
+
+}
+
+// Красим координаты змейки
+void show_snake_on_table() {
+
+    
 
 }
