@@ -1,9 +1,7 @@
 // Игра змейка
 
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <ctime>
+#include <stdio.h>
+
 #ifdef MAC_OS_X_VERSION_10_13
 
 // Библиотека нужна для функции Sleep().
@@ -437,6 +435,6 @@ int main() {
     }
 
     return 0;
-    
+
 }
 
