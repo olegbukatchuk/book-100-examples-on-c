@@ -1,30 +1,25 @@
-//
-// Created by Oleg Bukatchuk on 21/10/2017.
-//
-
-// Меняем местами два числа
 #include <stdio.h>
 
-int main(void) {
-
-    double A,B,temp;
+/* Меняем местами два числа */
+int main(void)
+{
+    double A, B, temp;
 
     printf("Введите A: ");
-    scanf("%lf",&A);
+    scanf("%lf", &A);
 
     printf("Введите B: ");
-    scanf("%lf",&B);
+    scanf("%lf", &B);
 
-    temp=A;
+    temp = A;
 
-    A=B;
+    A = B;
 
-    B=temp;
+    B = temp;
 
-    printf("\nПосле замены, A = %.2lf\n",A);
-    printf("После замены, B = %2.lf\n",B);
+    printf("\nПосле замены, A = %.2lf\n", A);
+    printf("После замены, B = %2.lf\n", B);
 
     return 0;
-
 }
 

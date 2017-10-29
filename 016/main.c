@@ -1,26 +1,17 @@
-//
-// Created by Oleg Bukatchuk on 21/10/2017.
-//
-
-// Вычисляем сумму натуральных чисел с помощью цикла
 #include <stdio.h>
 
-int main(void) {
-
-    int n,i,sum=0;
+/* Вычисляем сумму натуральных чисел с помощью цикла */
+int main(void)
+{
+    int n, i, sum = 0;
 
     printf("Введите положительное целое число: ");
-    scanf("%d",&n);
+    scanf("%d", &n);
 
-    for (i=1;i<=n;++i) {
+    for (i = 1; i <= n; ++i)
+        sum += i; /* sum = sum + i; */
 
-        // sum = sum + i;
-        sum+=i;
-
-    }
-
-    printf("Сумма = %d\n",sum);
+    printf("Сумма = %d\n", sum);
 
     return 0;
-
 }

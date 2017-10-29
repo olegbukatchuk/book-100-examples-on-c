@@ -1,35 +1,20 @@
-//
-// Created by Oleg Bukatchuk on 21/10/2017.
-//
-
-// Определяем является ли число положительным или отрицательным
 #include <stdio.h>
 
-int main(void) {
-
+/* Определяем является ли число положительным или отрицательным */
+int main(void)
+{
     double number;
 
     printf("Введите число: ");
-    scanf("%lf",&number);
+    scanf("%lf", &number);
 
-    if (number<=0.0) {
-
-        if (number==0.0) {
-
+    if (number <= 0.0) {
+        if (number == 0.0)
             printf("Вы ввели 0.\n");
-
-        } else {
-
+        else
             printf("Отрицательное.\n");
-
-        }
-
-    } else {
-
+    } else
         printf("Положительное.\n");
 
-    }
-
     return 0;
-
 }

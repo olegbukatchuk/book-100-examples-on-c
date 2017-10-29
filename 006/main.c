@@ -1,27 +1,22 @@
-//
-// Created by Oleg Bukatchuk on 21/10/2017.
-//
-
 #include <stdio.h>
 
-// Вычисляем частное и остаток от деления
-int main(void) {
-
-  int dividend,divisor,quotient,remainder;
+/* Вычисляем частное и остаток от деления */
+int main(void)
+{
+  int dividend, divisor, quotient, remainder;
 
   printf("Введите делимое: ");
-  scanf("%d",&dividend);
+  scanf("%d", &dividend);
 
   printf("Введите делитель: ");
-  scanf("%d",&divisor);
+  scanf("%d", &divisor);
 
-  quotient=dividend/divisor;
+  quotient = dividend / divisor;
 
-  remainder=dividend%divisor;
+  remainder = dividend % divisor;
 
-  printf("Частное = %d\n",quotient);
-  printf("Остаток = %d\n",remainder);
+  printf("Частное = %d\n", quotient);
+  printf("Остаток = %d\n", remainder);
 
   return 0;
-
 }

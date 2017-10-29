@@ -1,29 +1,19 @@
-//
-// Created by Oleg Bukatchuk on 22/10/2017.
-//
-
-// Создаём пирамиду и структуру (из звёздочек)
 #include <stdio.h>
 
-int main(void) {
-
-    int i,j,rows;
+/* Создаём пирамиду и структуру (из звёздочек) */
+int main(void)
+{
+    int i, j, rows;
 
     printf("Количество строк: ");
-    scanf("%d",&rows);
+    scanf("%d", &rows);
 
-    for (i=1;i<=rows;++i) {
-
-        for (j=1;j<=i;++j) {
-
+    for (i = 1; i <= rows; ++i) {
+        for (j = 1; j <= i; ++j)
             printf("* ");
 
-        }
-
         printf("\n");
-
     }
 
     return 0;
-
 }

@@ -1,14 +1,10 @@
-//
-// Created by Oleg Bukatchuk on 22/10/2017.
-//
-
-// Выводим предложение в обратном порядке
 #include <stdio.h>
 
+/* Выводим предложение в обратном порядке */
 void reverseSentence();
 
-int main(void) {
-
+int main(void)
+{
     printf("Введите предложение: ");
 
     reverseSentence();
@@ -16,19 +12,15 @@ int main(void) {
     printf("\n");
 
     return 0;
-
 }
 
-void reverseSentence() {
-
+void reverseSentence()
+{
     char c;
-    scanf("%c",&c);
+    scanf("%c", &c);
 
-    if (c!='\n') {
-
+    if (c != '\n') {
         reverseSentence();
-        printf("%c",c);
-
+        printf("%c", c);
     }
-
 }
