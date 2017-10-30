@@ -46,7 +46,7 @@ void insert_node(int value)
     /* Если список пуст нужно выделить память под голову списка */
     if (head == NULL) {
         head = (struct node *)malloc(sizeof(struct node *));
-        nead->next = NULL;
+        head->next = NULL;
     }
 
     /* Первый элемент - голова, второй - следующий элемент */
@@ -62,6 +62,9 @@ void insert_node(int value)
         one = one->next;
         two = two->next;
     }
+
+    one->next = temp;
+    temp->next = two;
 }
 
 
