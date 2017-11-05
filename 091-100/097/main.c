@@ -37,7 +37,6 @@ int main(int argc, char *argv[])
             case 'v':
                 fprintf(stdout, "%s %s\n", PACKAGE, VERSION);
                 exit(0);
-                break;
             case 'i':
                 ip_set = 1;
                 break;
@@ -86,16 +85,103 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+void print_ipadd(FILE *fp)
+{
+    char line[1024];
+    char *address = NULL;
+    char delim[] = ",:;'/\"+-_{}[]<>*&^%$#@!?~/|\\= \t\r\n";
+    int retval = 0;
+    regex_t re;
 
+    if (regcomp(&re, IPEXPR, REG_EXTENDED) != 0)
+        return;
 
+    while ((fgets(line, 1024, fp)) != NULL) {
+        if (strchr(line, '.') == NULL)
+            continue;
 
+        address = strtok(line, delim);
 
+        while (address != NULL) {
+            if (strlen(address) <= 15) {
+                if ((retval = regexec(&re, address, 0, NULL, 0)) == 0)
+                    printf("%s\n", address);
+            }
 
+            address = strtok(NULL, delim);
+        }
+    }
+}
 
+void print_email(FILE *fp)
+{
+    char address[256];
+    char line[1024];
+    char *ptr1 = NULL;
+    char *ptr2 = NULL;
+    int retval = 0;
+    regex_t re;
 
+    if (regcomp(&re, EMEXPR, REG_EXTENDED) != 0)
+        return;
 
+    while ((fgets(line, 1024, fp)) != NULL) {
+        if (strchr(line, '@') == NULL && strchr(line, '.') == NULL)
+            continue;
 
+        for (ptr1 = line, ptr2 = address; *ptr1; ptr1++) {
+            if (isalpha(*ptr1) || isdigit(*ptr1) || strchr(".-_@", *ptr1) != NULL)
+                *ptr2++ = *ptr1;
+            else {
+                *ptr2 = '\0';
 
+                if (strlen(address) >= 6 && strchr(address, '@') != NULL && strchr(address, '.') != NULL) {
+                    if ((retval = regexec(&re, address, 0, NULL, 0)) == 0)
+                        printf("%s\n", address);
+                }
+
+                ptr2 = address;
+            }
+        }
+    }
+}
+
+void print_url(FILE *fp)
+{
+    char line[1024];
+    char delim[] = "<> \t\n";
+    char *url = NULL;
+    int retval = 0;
+    regex_t re;
+
+    if (regcomp(&re, UREXPR, REG_ICASE | REG_EXTENDED) != 0)
+        return;
+
+    while ((fgets(line, 1024, fp)) != NULL) {
+        url = strtok(line, delim);
+
+        while (url != NULL) {
+            if ((retval = regexec(&re, url, 0, NULL, 0)) == 0)
+                printf("%s\n", url);
+
+            url = strtok(NULL, delim);
+        }
+    }
+}
+
+void print_help(int exval)
+{
+    printf("%s,%s выводим e-mail, URL или IP-адреса, найденные в тексте\n", PACKAGE, VERSION);
+    printf("%s [-h] [-v] [-i] [-e] [-u] ФАЙЛ...\n\n", PACKAGE);
+
+    printf(" -h        Отображает эту справку\n");
+    printf(" -v        Выводит номер версии\n\n");
+    printf(" -i        Выводит IP-адреса\n");
+    printf(" -e        Выводит e-mail адреса\n");
+    printf(" -u        Выводит URL\n\n");
+
+    exit(exval);
+}
 
 
 
